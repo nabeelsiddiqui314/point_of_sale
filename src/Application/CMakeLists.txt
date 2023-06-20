@@ -4,7 +4,10 @@ qt_add_executable(POS
     main.cpp
 )
 
-target_link_libraries(POS PRIVATE Qt6::Widgets)
+target_link_libraries(POS PRIVATE
+    core
+    Qt6::Widgets
+)
 
 set_target_properties(POS PROPERTIES
     WIN32_EXECUTABLE ON
