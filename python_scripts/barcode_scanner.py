@@ -12,13 +12,10 @@ def captureBarcode():
 
         barcodes = decode(frame)
         if not barcodes:
-            #             noBarcode = False
-            print("No barcodes detected!!")
+            pass
         else:
             for barcode in barcodes:
                 barcodeList.append(barcode.data)
             break
-    print(barcodeList)
+    return barcodeList
 
-
-captureBarcode()
