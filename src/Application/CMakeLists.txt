@@ -1,7 +1,7 @@
 qt_add_executable(POS
-    MainWindow.ui
     MainWindow.cpp
     main.cpp
+    Scanner/DummyScanner.cpp
 )
 
 target_link_libraries(POS PRIVATE
