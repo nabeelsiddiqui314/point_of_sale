@@ -1,5 +1,5 @@
 qt_add_library(core STATIC
-    # cpp files here
+    Scanner/Scanner.h
 )
 
 target_link_libraries(core PRIVATE Qt6::Core)
