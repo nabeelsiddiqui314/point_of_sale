@@ -33,11 +33,13 @@ bool ProductDatabase::insertProduct(int id, const Product& product) {
 }
 
 void ProductDatabase::deleteProduct(int id) {
-    QSqlQuery query;
-    query.prepare("delete from products where id = :id");
-    query.bindValue(":id", id);
+    if (doesProductExist(id)) {
+        QSqlQuery query;
+        query.prepare("delete from products where id = :id");
+        query.bindValue(":id", id);
 
-    query.exec();
+        query.exec();
+    }
 }
 
 bool ProductDatabase::doesProductExist(int id) {
