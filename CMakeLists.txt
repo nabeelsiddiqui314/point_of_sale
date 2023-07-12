@@ -8,5 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 qt_standard_project_setup()
 
+find_package(Python 3.11 COMPONENTS Interpreter Development REQUIRED)
+add_subdirectory(vendor/pybind11)
+
 add_subdirectory(src/Application)
 add_subdirectory(src/Core)

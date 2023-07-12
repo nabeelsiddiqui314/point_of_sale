@@ -8,6 +8,7 @@ find_package(Qt6 REQUIRED COMPONENTS Sql)
 target_link_libraries(core PRIVATE
     Qt6::Core
     Qt6::Sql
+    pybind11::embed
 )
 
 # makes it easier to include core header files
