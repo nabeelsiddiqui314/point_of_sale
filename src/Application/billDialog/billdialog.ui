@@ -14,8 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">border: 3px grey solid;
-border-raidus: 3px</string>
+   <string notr="true">background-color:rgb(56, 56, 56)</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -27,9 +26,11 @@ border-raidus: 3px</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:grey;
-color:white;
-border-raidus:2px
+    <string notr="true">background-color:rgb(44,44,44);
+	font:bold;
+	color:white;
+	border: 1.4px solid grey;
+	
 </string>
    </property>
    <property name="text">

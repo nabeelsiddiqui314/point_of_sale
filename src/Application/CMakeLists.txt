@@ -4,6 +4,7 @@ qt_add_executable(POS
     Scanner/DummyScanner.cpp
     ScannerDialog/scandialog.cpp
     billDialog/billdialog.cpp
+    addItems/addItem.cpp
 )
 
 target_link_libraries(POS PRIVATE

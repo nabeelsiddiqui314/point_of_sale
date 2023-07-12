@@ -18,6 +18,8 @@ private slots:
 
     void on_scanButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
