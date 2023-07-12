@@ -16,6 +16,7 @@ public:
     ~DummyScanner();
 public:
     void scan() override;
+    void stop() override;
 private:
     void closeEvent(QCloseEvent* event) override;
 private slots:

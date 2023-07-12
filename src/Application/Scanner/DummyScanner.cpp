@@ -17,6 +17,11 @@ void DummyScanner::scan() {
     show();
 }
 
+void DummyScanner::stop() {
+    emit _signals.scannerStopped();
+    hide();
+}
+
 void DummyScanner::closeEvent(QCloseEvent* event) {
     emit _signals.scannerStopped();
     event->accept();
@@ -25,16 +30,8 @@ void DummyScanner::closeEvent(QCloseEvent* event) {
 void DummyScanner::onOkClicked() {
     QString input = ui->codeEdit->text();
 
-    bool isNumeric;
-    int code = input.toInt(&isNumeric);
-
-    if (isNumeric) {
-        emit _signals.codeScanned(code);
-    }
-    else {
-        QMessageBox messageBox;
-        messageBox.critical(0, "Error", "Invalid code entered");
-
+    if (!input.isEmpty()) {
+        emit _signals.codeScanned(input);
     }
 }
 

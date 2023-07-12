@@ -9,7 +9,7 @@ public:
     ScannerSignals() = default;
     ~ScannerSignals() = default;
 signals:
-    void codeScanned(int code);
+    void codeScanned(QString code);
     void scannerStopped();
 };
 
@@ -19,6 +19,7 @@ public:
     virtual ~Scanner() = default;
 public:
     virtual void scan() = 0;
+    virtual void stop() = 0;
 public:
     ScannerSignals _signals;
 };
