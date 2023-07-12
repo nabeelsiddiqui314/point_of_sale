@@ -16,6 +16,8 @@ public:
 private slots:
     void on_proceedButton_clicked();
 
+    void on_scanButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

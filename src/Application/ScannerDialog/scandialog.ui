@@ -6,30 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>303</width>
+    <height>237</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>250</y>
-     <width>80</width>
-     <height>18</height>
+     <x>100</x>
+     <y>90</y>
+     <width>121</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:white;
-background-color:grey;
-font: bold
-</string>
+    <string notr="true">font-size: 20px;
+border-raidus:5px;</string>
    </property>
    <property name="text">
-    <string>Close</string>
+    <string>Scanning...</string>
    </property>
   </widget>
  </widget>

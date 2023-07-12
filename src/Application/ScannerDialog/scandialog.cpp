@@ -12,3 +12,9 @@ scanDialog::~scanDialog()
 {
     delete ui;
 }
+
+void scanDialog::on_pushButton_clicked()
+{
+
+}
+

@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
 #include "ScannerDialog/scandialog.h"
-
+#include "billDialog/billdialog.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow) {
@@ -13,6 +13,15 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::on_proceedButton_clicked()
+{
+    billDialog bill;
+    bill.setModal(true);
+    bill.exec();
+
+}
+
+
+void MainWindow::on_scanButton_clicked()
 {
     scanDialog scan;
     scan.setModal(true);
