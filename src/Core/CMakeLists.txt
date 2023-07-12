@@ -2,6 +2,7 @@ qt_add_library(core STATIC
     Scanner/Scanner.h
     Scanner/CameraScanner.cpp
     Database/ProductDatabase.cpp
+    Models/ProductsTableModel.cpp
 )
 
 find_package(Qt6 REQUIRED COMPONENTS Sql)
