@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
+#include "ScannerDialog/scandialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,5 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::on_proceedButton_clicked()
+{
+    scanDialog scan;
+    scan.setModal(true);
+    scan.exec();
 }
 
