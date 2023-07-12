@@ -16,6 +16,9 @@ public:
     bool insertProduct(int id, const Product& product);
     void deleteProduct(int id);
 
+    bool modifyProductName(int id, const QString& name);
+    bool modifyProductPrice(int id, int price);
+
     bool doesProductExist(int id);
 
     Product getProduct(int id);
