@@ -2,14 +2,29 @@
 #include "ui_ProductAddDialog.h"
 
 #include <QMessageBox>
+#include <QCloseEvent>
 
-ProductAddDialog::ProductAddDialog(QWidget *parent)
+#include <Scanner/Scanner.h>
+
+ProductAddDialog::ProductAddDialog(Scanner* scanner, QWidget *parent)
     : QDialog(parent),
-    ui(new Ui::ProductAddDialog) {
+      ui(new Ui::ProductAddDialog),
+      m_scanner(scanner) {
     ui->setupUi(this);
 
     connect(ui->okButton, &QAbstractButton::released, this, &ProductAddDialog::onOkClicked);
     connect(ui->cancelButton, &QAbstractButton::released, this, &ProductAddDialog::onCancelClicked);
+    connect(ui->scanButton, &QAbstractButton::released, this, [&](){
+        m_scanner->scan();
+    });
+    connect(&m_scanner->_signals, &ScannerSignals::codeScanned, this, &ProductAddDialog::onCodeScanned);
+}
+
+void ProductAddDialog::closeEvent(QCloseEvent* event) {
+    m_scanner->stop();
+    clear();
+
+    event->accept();
 }
 
 void ProductAddDialog::clear() {
@@ -60,8 +75,13 @@ void ProductAddDialog::onOkClicked() {
 }
 
 void ProductAddDialog::onCancelClicked() {
+    m_scanner->stop();
     hide();
     clear();
+}
+
+void ProductAddDialog::onCodeScanned(QString code) {
+    ui->idEdit->setText(code);
 }
 
 ProductAddDialog::~ProductAddDialog() {

@@ -6,6 +6,7 @@
 
 #include "ProductAddDialog.h"
 
+
 namespace Ui {
 class ProductManagementForm;
 }
@@ -13,7 +14,7 @@ class ProductManagementForm;
 class ProductManagementForm : public QWidget {
     Q_OBJECT
 public:
-    ProductManagementForm(QWidget *parent = nullptr);
+    ProductManagementForm(Scanner* scanner, QWidget *parent = nullptr);
     ~ProductManagementForm();
 private slots:
     void onAddClicked();
@@ -23,6 +24,7 @@ private:
     Ui::ProductManagementForm *ui;
     ProductsTableModel* m_model;
     ProductAddDialog* m_addDialog;
+    Scanner* m_scanner;
 };
 
 #endif // PRODUCTMANAGEMENTFORM_H

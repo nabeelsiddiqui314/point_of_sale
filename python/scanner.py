@@ -1,7 +1,7 @@
 from pyzbar.pyzbar import decode
 import cv2
 
-capture = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(1)
 
 def captureBarcode():
 	flag, frame = capture.read()

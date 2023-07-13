@@ -1,14 +1,17 @@
 #include "ProductManagementForm.h"
 #include "ui_ProductManagementForm.h"
 
-ProductManagementForm::ProductManagementForm(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ProductManagementForm) {
+#include <Scanner/Scanner.h>
+
+ProductManagementForm::ProductManagementForm(Scanner* scanner, QWidget *parent)
+    : QWidget(parent),
+      ui(new Ui::ProductManagementForm),
+      m_scanner(scanner) {
     ui->setupUi(this);
     m_model = new ProductsTableModel(this);
     ui->tableView->setModel(m_model);
 
-    m_addDialog = new ProductAddDialog(this);
+    m_addDialog = new ProductAddDialog(scanner, this);
 
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -19,6 +22,7 @@ ProductManagementForm::ProductManagementForm(QWidget *parent) :
 }
 
 void ProductManagementForm::onAddClicked() {
+    m_scanner->scan();
     m_addDialog->show();
 }
 
