@@ -20,7 +20,7 @@ bool ProductsTableModel::setData(const QModelIndex &index, const QVariant &value
         return false;
     }
 
-    int id = getIdFromIndex(index);
+    ID id = getIdFromIndex(index);
 
     bool isDataModified;
 
@@ -46,7 +46,7 @@ bool ProductsTableModel::setData(const QModelIndex &index, const QVariant &value
 
 void ProductsTableModel::removeRecords(const QModelIndexList& indices) {
     for (auto& index : indices) {
-        int id = getIdFromIndex(index);
+        ID id = getIdFromIndex(index);
         m_database.deleteProduct(id);
     }
     update();
@@ -60,8 +60,8 @@ void ProductsTableModel::update() {
     setHeaderData(2, Qt::Horizontal, "Price");
 }
 
-int ProductsTableModel::getIdFromIndex(const QModelIndex &index) {
+ID ProductsTableModel::getIdFromIndex(const QModelIndex &index) {
     QModelIndex idIndex = QSqlQueryModel::index(index.row(), 0);
-    int id = data(idIndex).toInt();
+    ID id = data(idIndex).toString();
     return id;
 }

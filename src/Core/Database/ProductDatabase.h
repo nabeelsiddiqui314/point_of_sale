@@ -6,6 +6,8 @@
 
 #include "Product.h"
 
+typedef QString ID;
+
 class ProductDatabase {
 public:
     ProductDatabase();
@@ -13,15 +15,15 @@ public:
 public:
     static void create(const QString& applicationPath);
 
-    bool insertProduct(int id, const Product& product);
-    void deleteProduct(int id);
+    bool insertProduct(const ID& id, const Product& product);
+    void deleteProduct(const ID& id);
 
-    bool modifyProductName(int id, const QString& name);
-    bool modifyProductPrice(int id, int price);
+    bool modifyProductName(const ID& id, const QString& name);
+    bool modifyProductPrice(const ID& id, int price);
 
-    bool doesProductExist(int id);
+    bool doesProductExist(const ID& id);
 
-    Product getProduct(int id);
+    Product getProduct(const ID& id);
 private:
     QSqlDatabase m_database;
 };

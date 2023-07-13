@@ -12,12 +12,12 @@ void ProductDatabase::create(const QString& applicationPath) {
     database.open();
 
     QSqlQuery query;
-    query.exec("create table if not exists products (id int, name varchar(50), price int)");
+    query.exec("create table if not exists products (id varchar(13), name varchar(50), price int)");
     database.close();
 }
 
 
-bool ProductDatabase::insertProduct(int id, const Product& product) {
+bool ProductDatabase::insertProduct(const ID& id, const Product& product) {
     if (doesProductExist(id))
         return false;
 
@@ -30,7 +30,7 @@ bool ProductDatabase::insertProduct(int id, const Product& product) {
     return query.exec();
 }
 
-void ProductDatabase::deleteProduct(int id) {
+void ProductDatabase::deleteProduct(const ID& id) {
     if (doesProductExist(id)) {
         QSqlQuery query;
         query.prepare("delete from products where id = :id");
@@ -40,7 +40,7 @@ void ProductDatabase::deleteProduct(int id) {
     }
 }
 
-bool ProductDatabase::modifyProductName(int id, const QString& name) {
+bool ProductDatabase::modifyProductName(const ID& id, const QString& name) {
     if (!doesProductExist(id))
         return false;
 
@@ -51,7 +51,7 @@ bool ProductDatabase::modifyProductName(int id, const QString& name) {
     return query.exec();
 }
 
-bool ProductDatabase::modifyProductPrice(int id, int price) {
+bool ProductDatabase::modifyProductPrice(const ID& id, int price) {
     if (!doesProductExist(id))
         return false;
 
@@ -62,7 +62,7 @@ bool ProductDatabase::modifyProductPrice(int id, int price) {
     return query.exec();
 }
 
-bool ProductDatabase::doesProductExist(int id) {
+bool ProductDatabase::doesProductExist(const ID& id) {
     QSqlQuery query;
     query.prepare("select * from products where id = :id");
     query.bindValue(":id", id);
@@ -72,7 +72,7 @@ bool ProductDatabase::doesProductExist(int id) {
     return query.next();
 }
 
-Product ProductDatabase::getProduct(int id) {
+Product ProductDatabase::getProduct(const ID& id) {
     QSqlQuery query;
     query.prepare("select * from products where id = :id");
     query.bindValue(":id", id);
