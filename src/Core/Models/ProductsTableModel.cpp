@@ -20,8 +20,7 @@ bool ProductsTableModel::setData(const QModelIndex &index, const QVariant &value
         return false;
     }
 
-    QModelIndex idIndex = QSqlQueryModel::index(index.row(), 0);
-    int id = data(idIndex).toInt();
+    int id = getIdFromIndex(index);
 
     bool isDataModified;
 
@@ -45,10 +44,24 @@ bool ProductsTableModel::setData(const QModelIndex &index, const QVariant &value
     return isDataModified;
 }
 
+void ProductsTableModel::removeRecords(const QModelIndexList& indices) {
+    for (auto& index : indices) {
+        int id = getIdFromIndex(index);
+        m_database.deleteProduct(id);
+    }
+    update();
+}
+
 void ProductsTableModel::update() {
     setQuery("select * from products");
 
     setHeaderData(0, Qt::Horizontal, "ID");
     setHeaderData(1, Qt::Horizontal, "Name");
     setHeaderData(2, Qt::Horizontal, "Price");
+}
+
+int ProductsTableModel::getIdFromIndex(const QModelIndex &index) {
+    QModelIndex idIndex = QSqlQueryModel::index(index.row(), 0);
+    int id = data(idIndex).toInt();
+    return id;
 }

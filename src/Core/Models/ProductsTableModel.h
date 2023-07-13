@@ -13,7 +13,10 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role) override;
 
+    void removeRecords(const QModelIndexList& indices);
+private:
     void update();
+    int getIdFromIndex(const QModelIndex &index);
 private:
     ProductDatabase m_database;
 };
