@@ -5,19 +5,30 @@ BillModel::BillModel(QObject *parent)
 
 }
 
-//QVariant BillModel::headerData(int section, Qt::Orientation orientation, int role) const {
-//    return QString("test");
-//}
+QVariant BillModel::headerData(int section, Qt::Orientation orientation, int role) const {
+    if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
+        QString header;
 
-//bool BillModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant& value, int role) {
-//    if (value != headerData(section, orientation, role)) {
-//        // FIXME: Implement me!
-//        emit headerDataChanged(orientation, section, section);
-//        return true;
-//    }
-//    return false;
-//}
+        switch (section) {
+        case 0:
+            header = QString("ID");
+            break;
+        case 1:
+            header = QString("Name");
+            break;
+        case 2:
+            header = QString("Price");
+            break;
+        case 3:
+            header = QString("Quantity");
+            break;
+        }
 
+        return header;
+    }
+
+    return QVariant();
+}
 
 int BillModel::rowCount(const QModelIndex& parent) const {
     if (parent.isValid())
