@@ -88,6 +88,7 @@ bool BillModel::setData(const QModelIndex &index, const QVariant& value, int rol
     m_bill.changeQuantityAt(index.row(), quantity);
 
     emit dataChanged(index, index, {role});
+    emit billChanged();
 
     return true;
 }
@@ -122,6 +123,8 @@ bool BillModel::addItem(const ID& id) {
         emit dataChanged(index, index);
     }
 
+    emit billChanged();
+
     return true;
 }
 
@@ -135,4 +138,10 @@ void BillModel::removeItems(const QModelIndexList& indices) {
     beginRemoveRows(QModelIndex(), index.row(), index.row());
     m_bill.removeItemAt(index.row());
     endRemoveRows();
+
+    emit billChanged();
+}
+
+int BillModel::getTotal() const {
+    return m_bill.computeTotal();
 }

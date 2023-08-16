@@ -25,6 +25,10 @@ public:
 
     bool addItem(const ID& id);
     void removeItems(const QModelIndexList& indices);
+
+    int getTotal() const;
+signals:
+    void billChanged();
 private:
     Bill m_bill;
     ProductDatabase m_database;

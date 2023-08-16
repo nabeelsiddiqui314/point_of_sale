@@ -24,6 +24,8 @@ public:
 
     BillItem getItemAt(int index) const;
     int getItemCount() const;
+
+    int computeTotal() const;
 private:
     std::vector<BillItem> m_items;
     ProductDatabase m_database;

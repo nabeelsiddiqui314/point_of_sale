@@ -53,3 +53,13 @@ BillItem Bill::getItemAt(int index) const {
 int Bill::getItemCount() const {
     return m_items.size();
 }
+
+int Bill::computeTotal() const {
+    int total = 0;
+
+    for (auto& item : m_items) {
+        total += item.product.price * item.quantity;
+    }
+
+    return total;
+}
