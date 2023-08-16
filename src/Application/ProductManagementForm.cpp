@@ -22,7 +22,6 @@ ProductManagementForm::ProductManagementForm(Scanner* scanner, QWidget *parent)
 }
 
 void ProductManagementForm::onAddClicked() {
-    m_scanner->scan();
     m_addDialog->show();
 }
 

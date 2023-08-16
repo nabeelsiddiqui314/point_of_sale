@@ -17,7 +17,16 @@ ProductAddDialog::ProductAddDialog(Scanner* scanner, QWidget *parent)
     connect(ui->scanButton, &QAbstractButton::released, this, [&](){
         m_scanner->scan();
     });
+}
+
+void ProductAddDialog::showEvent(QShowEvent*) {
+    m_scanner->scan();
     connect(&m_scanner->_signals, &ScannerSignals::codeScanned, this, &ProductAddDialog::onCodeScanned);
+}
+
+void ProductAddDialog::hideEvent(QHideEvent*) {
+    m_scanner->stop();
+    disconnect(&m_scanner->_signals, &ScannerSignals::codeScanned, this, &ProductAddDialog::onCodeScanned);
 }
 
 void ProductAddDialog::closeEvent(QCloseEvent* event) {

@@ -16,6 +16,8 @@ public:
     ProductAddDialog(Scanner* scanner, QWidget *parent = nullptr);
     ~ProductAddDialog();
 private:
+    void showEvent(QShowEvent*) override;
+    void hideEvent(QHideEvent*) override;
     void closeEvent(QCloseEvent* event) override;
     void clear();
 signals:
